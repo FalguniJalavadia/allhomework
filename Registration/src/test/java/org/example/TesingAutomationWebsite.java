@@ -27,7 +27,7 @@ public class TesingAutomationWebsite {
         driver.findElement(By.xpath("//*[@id=\"root\"]/main/header/div/div/div/div[2]/div/div[3]/a")).click();
         // enter email
         driver.findElement(By.xpath("//input[@type=\"email\"]")).sendKeys("asdf@gmail.com");
-        driver.findElement(By.xpath("//input[@class='show-password  error']")).sendKeys("asdf123");
+        driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/form/div[2]/div/input")).sendKeys("asdf123");
        // enter post code
         driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/form/div[4]/div/input")).sendKeys("Hp2 4Ba");
         driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/form/label[1]/span")).click();
@@ -85,13 +85,13 @@ driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/form/button")
      // type url
      driver.get("https://www.topshop.com/login");
     // click signin
-      driver.findElement(By.xpath("//h3[@class='Login-header']")).click();
+      driver.findElement(By.cssSelector("span.AccountIcon-icon")).click();
       // type email
      driver.findElement(By.xpath("//input[@id='Login-email']")).sendKeys("falgunip08@gmail.com");
     // enter password
     driver.findElement(By.xpath("//input[@id='Login-password']")).sendKeys("123456");
   // click box
-    driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div[2]/section/section/div[1]/section[1]/form/label/span[1]/span")).click();
+    driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[5]/div[2]/section/section/div[1]/section[1]/form/label/span[1]/span")).click();
 
  }
  @Test
