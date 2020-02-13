@@ -54,17 +54,17 @@ public class Exercise
         // clear text input box
         public void clearText(By by){ driver.findElement(by).clear();}
 
-        // select by viible text
-        public void selectByVisibleText(By by,String text)
-        {
+        // select by visible text
+        public void selectElementByVisibleText(By by, String text){
             Select select = new Select(driver.findElement(by));
             select.selectByVisibleText(text);
         }
-        public void selectByIndex(By by,int number)
+
+        public void selectElementByIndex(By by, int number)
         { Select select = new Select(driver.findElement(by));
             select.selectByIndex(number);
         }
-        public void selectByValue(By by,String text)
+        public void selectElementByValue(By by,String text)
         {
             Select select = new Select(driver.findElement(by));
             select.selectByValue(text);
@@ -94,44 +94,35 @@ public class Exercise
         public void userSuccefullyRegister() {
             driver.get("https://demo.nopcommerce.com/");
             // waitForClickable(By.id("register-button"),20);
-
             clickOnElements(new By.ByLinkText("Register"));
-
-
-        waitForClickable(By.id("register-button"), 70);
-
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        waitForVisibility(By.id("FirstName"),50);
-        EnterText(By.id("FirstName"), "falguni");
-        // enter last name
-        EnterText(By.id("LastName"), "patel");
-        // selecting date of birthday
-      // selectByValue(By.xpath("//select[@name=\"DateofBirthDay\"]"), "18");
-       // selecting month of birthday
-     //  selectByIndex(By.xpath("//select[@name=\"DateofBirthMonth'\"]"), 2);
-       //selecting year of birthday
-      // selectByVisibleText(By.xpath("//select[@name='DateOfBirthYear']"), "1975");
-        // entering email
-        EnterText(By.xpath("//input[@name='Email']"), "falgunip08+" + timeStamp() + "@gamil.com");
-        // entering password
-        EnterText(By.xpath("//input[@name='Password']"), "123456f");
-        // entering confirmpassword
-        EnterText(By.id("ConfirmPassword"), "123456f");
-        // click on register
-        clickOnElements(By.id("register-button"));
-       // verify userShouldAbleToRegisterSuccessfully
-       String actual = getTextFromelements(By.className("result"));
-        Assert.assertEquals("Failed", expected, actual);
-
-
-
+            waitForClickable(By.id("register-button"), 70);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            waitForVisibility(By.id("FirstName"),50);
+            EnterText(By.id("FirstName"), "falguni");
+            // enter last name
+            EnterText(By.id("LastName"), "patel");
+            //selecting date of birthday
+            selectElementByValue(By.xpath("//select[@name='DateOfBirthDay']"), "18");
+            //selecting month of birthday
+            selectElementByIndex(By.xpath("//select[@name='DateOfBirthMonth']"), 3);
+            //selecting year of birthday
+            selectElementByVisibleText(By.xpath("//select[@name='DateOfBirthYear']"), "1975");
+            // entering email
+            EnterText(By.xpath("//input[@name='Email']"), "falgunip08+" + timeStamp() + "@gamil.com");
+            // entering password
+            EnterText(By.xpath("//input[@name='Password']"), "123456f");
+            // entering confirmpassword
+            EnterText(By.id("ConfirmPassword"), "123456f");
+            // click on register
+            clickOnElements(By.id("register-button"));
+            // verify userShouldAbleToRegisterSuccessfully
+            String actual = getTextFromelements(By.className("result"));
+            Assert.assertEquals("Failed", expected, actual);
         }
-
-
     }
 
 
